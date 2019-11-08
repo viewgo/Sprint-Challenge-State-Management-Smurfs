@@ -12,6 +12,10 @@ export const DELETE_SMURFS_START = "DELETE_SMURFS_START";
 export const DELETE_SMURFS_SUCCESS = "DELETE_SMURFS_SUCCESS";
 export const DELETE_SMURFS_FAILED = "DELETE_SMURFS_FAILED";
 
+export const EDIT_SMURFS_START = "EDIT_SMURFS_START";
+export const EDIT_SMURFS_SUCCESS = "EDIT_SMURFS_SUCCESS";
+export const EDIT_SMURFS_FAILED = "EDIT_SMURFS_FAILED";
+
 export const smurfLoading = () => ({ type: FETCH_SMURFS_LOADING });
 export const smurfLoadSuccess = data => ({ type: FETCH_SMURFS_SUCCESS, payload: data });
 export const smurfLoadFailure = error => ({ type: FETCH_SMURFS_FAILED, payload: error });
@@ -23,6 +27,11 @@ export const smurfPostFailure = error => ({ type: POST_SMURFS_FAILED, payload: e
 export const smurfDeleteStart = () => ({ type: DELETE_SMURFS_START });
 export const smurfDeleteSuccess = data => ({ type: DELETE_SMURFS_SUCCESS, payload: data });
 export const smurfDeleteFailure = error => ({ type: DELETE_SMURFS_FAILED, payload: error });
+
+export const smurfEditStart = () => ({ type: EDIT_SMURFS_START });
+export const smurfEditSuccess = data => ({ type: EDIT_SMURFS_SUCCESS, payload: data });
+export const smurfEditFailure = error => ({ type: EDIT_SMURFS_FAILED, payload: error });
+
 
 const default_api = "http://localhost:3333/smurfs";
 
@@ -70,6 +79,22 @@ export function deleteSmurfs(id) {
       })
       .catch(error => {
         dispatch(smurfDeleteFailure(error));
+      });
+  };
+}
+
+export function editSmurfs(smurf, id) {
+  return function(dispatch) {
+    dispatch(smurfEditStart());
+
+    return axios
+      .put(`http://localhost:3333/smurfs/${id}`, smurf)
+      .then(response => {
+        console.log("Response data after edit", response.data);
+        dispatch(smurfEditSuccess());
+      })
+      .catch(error => {
+        dispatch(smurfEditFailure(error));
       });
   };
 }

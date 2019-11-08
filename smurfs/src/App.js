@@ -1,19 +1,43 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { fetchSmurfs, deleteSmurfs } from "./actions";
+import { fetchSmurfs, deleteSmurfs, editSmurfs } from "./actions";
 
 import Form from "./components/Form";
 
 function App(props) {
+  const [smurfToEdit, setSmurfToEdit] = useState();
+
   useEffect(() => {
     props.fetchSmurfs();
   }, [props.changeTrigger]);
+
+  const editButton = data => {
+    console.log("edit clicked");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setSmurfToEdit(data);
+  };
+
+  const editSmurf = data => {
+    props.smurfs.map((element, index) => {
+      if (
+        smurfToEdit.name === element.name &&
+        smurfToEdit.age === element.age &&
+        smurfToEdit.height === element.height
+      ) {
+        console.log("FOUND MATCH");
+        console.log(data, data.id);
+        props.editSmurfs(data, data.id);
+      }
+    });
+
+    setSmurfToEdit();
+  };
 
   return (
     <div className="App">
       <h1>Smurfs and Stuff</h1>
 
-      <Form />
+      <Form smurfToEdit={smurfToEdit} editSmurf={editSmurf} />
 
       <div className="smurf-list">
         {props.smurfs.map(smurf => (
@@ -28,7 +52,15 @@ function App(props) {
                 props.deleteSmurfs(smurf.id);
               }}
             >
-              X
+              ✘
+            </div>
+            <div
+              className="edit"
+              onClick={() => {
+                editButton(smurf);
+              }}
+            >
+              ✔
             </div>
           </div>
         ))}
@@ -39,7 +71,8 @@ function App(props) {
 
 const mapDispatchToProps = {
   fetchSmurfs,
-  deleteSmurfs
+  deleteSmurfs,
+  editSmurfs
 };
 
 export default connect(

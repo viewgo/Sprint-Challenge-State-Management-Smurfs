@@ -5,13 +5,28 @@ import { postSmurfs, fetchSmurfs } from "../actions";
 function App(props) {
   const [smurf, setSmurf] = useState({ name: "", age: "", height: "" });
 
-  const submitForm = e => {
-    e.preventDefault();
-    console.log("form submitted with values", smurf);
-    props.postSmurfs(smurf);
-    setSmurf({ name: "", age: "", height: "" });
+  useEffect(() => {
+    if(props.smurfToEdit){
+      setSmurf(props.smurfToEdit);
+    }
+  }, [props.smurfToEdit])
 
-    props.fetchSmurfs();
+  const submitForm = e => {
+
+    if (!props.smurfToEdit) {
+      e.preventDefault();
+      console.log("form submitted with values", smurf);
+      props.postSmurfs(smurf);
+      setSmurf({ name: "", age: "", height: "" });
+
+      props.fetchSmurfs();
+    }
+    else{
+      e.preventDefault();
+      console.log("editing instead");
+      props.editSmurf(smurf);
+      setSmurf({ name: "", age: "", height: "" });
+    }
   };
 
   const handleChange = e => {

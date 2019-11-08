@@ -7,7 +7,10 @@ import {
   POST_SMURFS_FAILED,
   DELETE_SMURFS_START,
   DELETE_SMURFS_SUCCESS,
-  DELETE_SMURFS_FAILED
+  DELETE_SMURFS_FAILED,
+  EDIT_SMURFS_START,
+  EDIT_SMURFS_SUCCESS,
+  EDIT_SMURFS_FAILED
 } from "../actions";
 
 const initialState = {
@@ -66,6 +69,21 @@ function reducer(state = initialState, action) {
         changeTrigger: !state.changeTrigger
       };
     case DELETE_SMURFS_FAILED:
+      return {
+        ...state,
+        error: action.payload
+      };
+
+      case EDIT_SMURFS_START:
+      return {
+        ...state
+      };
+    case EDIT_SMURFS_SUCCESS:
+      return {
+        ...state,
+        changeTrigger: !state.changeTrigger
+      };
+    case EDIT_SMURFS_FAILED:
       return {
         ...state,
         error: action.payload
