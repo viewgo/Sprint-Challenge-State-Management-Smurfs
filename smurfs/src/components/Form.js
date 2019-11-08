@@ -6,13 +6,12 @@ function App(props) {
   const [smurf, setSmurf] = useState({ name: "", age: "", height: "" });
 
   useEffect(() => {
-    if(props.smurfToEdit){
+    if (props.smurfToEdit) {
       setSmurf(props.smurfToEdit);
     }
-  }, [props.smurfToEdit])
+  }, [props.smurfToEdit]);
 
   const submitForm = e => {
-
     if (!props.smurfToEdit) {
       e.preventDefault();
       console.log("form submitted with values", smurf);
@@ -20,8 +19,7 @@ function App(props) {
       setSmurf({ name: "", age: "", height: "" });
 
       props.fetchSmurfs();
-    }
-    else{
+    } else {
       e.preventDefault();
       console.log("editing instead");
       props.editSmurf(smurf);
@@ -38,7 +36,7 @@ function App(props) {
     <div className="form">
       <form onSubmit={submitForm}>
         <div className="form-inputs">
-
+          
           <input 
             name="name" 
             id="name" 
@@ -65,7 +63,6 @@ function App(props) {
           />
 
           <button type="submit">Submit</button>
-          
         </div>
       </form>
     </div>

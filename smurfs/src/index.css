@@ -91,7 +91,7 @@ button:hover {
   color: #ff0000;
 }
 
-.delete:hover{
+.delete:hover {
   cursor: pointer;
 }
 
@@ -104,6 +104,6 @@ button:hover {
   color: #ff0000;
 }
 
-.edit:hover{
+.edit:hover {
   cursor: pointer;
 }

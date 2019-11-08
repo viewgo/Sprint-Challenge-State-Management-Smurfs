@@ -74,7 +74,7 @@ function reducer(state = initialState, action) {
         error: action.payload
       };
 
-      case EDIT_SMURFS_START:
+    case EDIT_SMURFS_START:
       return {
         ...state
       };

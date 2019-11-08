@@ -32,7 +32,6 @@ export const smurfEditStart = () => ({ type: EDIT_SMURFS_START });
 export const smurfEditSuccess = data => ({ type: EDIT_SMURFS_SUCCESS, payload: data });
 export const smurfEditFailure = error => ({ type: EDIT_SMURFS_FAILED, payload: error });
 
-
 const default_api = "http://localhost:3333/smurfs";
 
 export function fetchSmurfs(api = default_api) {
