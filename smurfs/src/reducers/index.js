@@ -18,7 +18,7 @@ function reducer(state = initialState, action) {
     case FETCH_SMURFS_SUCCESS:
       return {
         ...state,
-        cards: action.payload,
+        smurfs: action.payload,
         isFetching: false,
         error: null
       };
