@@ -1,15 +1,15 @@
-export const FETCH_SMURFS_LOADING = "FETCH_SMURF_LOADING";
-export const FETCH_SMURFS_SUCCESS = "FETCH_SMURF_SUCCESS";
-export const FETCH_SMURFS_FAILED = "FETCH_SMURF_FAILED";
+export const FETCH_SMURFS_LOADING = "FETCH_SMURFS_LOADING";
+export const FETCH_SMURFS_SUCCESS = "FETCH_SMURFS_SUCCESS";
+export const FETCH_SMURFS_FAILED = "FETCH_SMURFS_FAILED";
 
 
-export const smurfLoading = () => ({ type: FETCH_SMURF_LOADING });
-export const smurfLoadSuccess = data => ({ type: FETCH_SMURF_SUCCESS, payload: data });
-export const smurfLoadFailure = error => ({ type: FETCH_SMURF_FAILED, payload: error });
+export const smurfLoading = () => ({ type: FETCH_SMURFS_LOADING });
+export const smurfLoadSuccess = data => ({ type: FETCH_SMURFS_SUCCESS, payload: data });
+export const smurfLoadFailure = error => ({ type: FETCH_SMURFS_FAILED, payload: error });
 
 const default_api = "https://localhost:3333/";
 
-export function fetchsmurf(api = default_api) { 
+export function fetchSmurf(api = default_api) { 
 
   return function(dispatch) {
     dispatch(smurfLoading());
