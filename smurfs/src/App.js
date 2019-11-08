@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchSmurfs } from "./actions";
+import { fetchSmurfs, deleteSmurfs } from "./actions";
 
 import Form from "./components/Form";
 
 function App(props) {
   useEffect(() => {
     props.fetchSmurfs();
-  }, [props.gotPostTrigger]);
+  }, [props.changeTrigger]);
 
   return (
     <div className="App">
@@ -21,6 +21,15 @@ function App(props) {
             <h3>{smurf.name}</h3>
             <p>{smurf.age} years old</p>
             <p>{smurf.height} tall</p>
+            <div
+              className="delete"
+              onClick={() => {
+                console.log("delete clicked");
+                props.deleteSmurfs(smurf.id);
+              }}
+            >
+              X
+            </div>
           </div>
         ))}
       </div>
@@ -29,7 +38,8 @@ function App(props) {
 }
 
 const mapDispatchToProps = {
-  fetchSmurfs
+  fetchSmurfs,
+  deleteSmurfs
 };
 
 export default connect(

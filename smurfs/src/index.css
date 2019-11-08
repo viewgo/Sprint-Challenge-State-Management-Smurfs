@@ -67,6 +67,8 @@ button:hover {
 }
 
 .smurf {
+  position: relative;
+
   border: 3px solid #ff0000;
   border-radius: 16px;
   background-color: #e3d900;
@@ -78,4 +80,17 @@ button:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  font-weight: 1000;
+  color: #ff0000;
+}
+
+.delete:hover{
+  cursor: pointer;
 }
