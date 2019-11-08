@@ -39,7 +39,7 @@ input {
   padding: 5px;
 }
 
-*:focus{
+*:focus {
   outline: 0;
 }
 
@@ -52,7 +52,7 @@ button {
   padding: 5px;
 }
 
-button:hover{
+button:hover {
   cursor: pointer;
 }
 
