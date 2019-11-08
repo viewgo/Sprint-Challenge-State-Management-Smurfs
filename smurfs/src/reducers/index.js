@@ -41,7 +41,7 @@ function reducer(state = initialState, action) {
       return {
         ...state
       };
-    case POST_SMURFS_SUCCESS:
+    case POST_SMURFS_SUCCESS:      
       return {
         ...state,
         gotPostTrigger: !state.gotPostTrigger

@@ -42,6 +42,7 @@ export function postSmurfs(values) {
       .post("http://localhost:3333/smurfs", values)
       .then(response => {
         console.log("Response data after post", response.data);
+        dispatch(smurfPostSuccess());
       })
       .then(() => {
         fetchSmurfs();
